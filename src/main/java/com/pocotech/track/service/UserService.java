@@ -5,6 +5,7 @@ import com.pocotech.track.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,15 +17,17 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Transactional(readOnly = true)
     public List<UserEntity> find() {
         return userRepository.selectAll().stream()
                 .map(record -> new UserEntity(record.getUserId(), record.getUsername()))
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     public void create(String username, String password, String authority) {
         var encodedPassword = passwordEncoder.encode(password);
-        var record = new UserRecord(null, username, encodedPassword);
+        var record = new UserRecord(null, username, encodedPassword, true, null); // TODO authority
         userRepository.insert(record);
     }
 }
