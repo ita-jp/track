@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+
+  db:
+    build: ./docker/postgres
+    restart: always
+    environment:
+      POSTGRES_USER: track-user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: track-db
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8090:8080"
