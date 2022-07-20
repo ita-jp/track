@@ -4,3 +4,9 @@ spring:
     url: jdbc:postgresql://localhost:5432/track-db
     username: track-user
     password: password
+logging:
+  level:
+    com:
+      pocotech:
+        track:
+          repository: DEBUG
