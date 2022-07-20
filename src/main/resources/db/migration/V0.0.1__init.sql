@@ -16,6 +16,6 @@ CREATE TABLE authorities
 CREATE UNIQUE INDEX ix_auth_username ON authorities (user_id, authority);
 
 -- password1234
-insert into users (user_id, username, password, enabled) values (1, 'tom', '3b977839c7d9fd9256514cb7974f825336ce587940d0252923380a419f4644926c1071bd93d88c28', true);
+insert into users (username, password, enabled) values ('tom', '3b977839c7d9fd9256514cb7974f825336ce587940d0252923380a419f4644926c1071bd93d88c28', true);
 insert into authorities (user_id, authority) values (1, 'ADMIN');
 insert into authorities (user_id, authority) values (1, 'USER');
