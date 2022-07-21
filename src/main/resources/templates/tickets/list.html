@@ -9,6 +9,28 @@
 <section layout:fragment="page-content">
     <h1>チケット一覧</h1>
     <a class="btn btn-primary" href="./creationForm.html" th:href="@{/tickets/creationForm}" role="button">チケット作成</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>概要</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ticket : ${ticketList}">
+            <th>
+                <a href="./detail.html" th:href="@{/tickets/{id}(id=${ticket.ticketId})}" th:text="${ticket.ticketId}">
+                    (id)
+                </a>
+            </th>
+            <td>
+                <a href="./detail.html" th:href="@{/tickets/{id}(id=${ticket.ticketId})}" th:text="${ticket.summary}">
+                    (summary)
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </section>
 </body>
 </html>
