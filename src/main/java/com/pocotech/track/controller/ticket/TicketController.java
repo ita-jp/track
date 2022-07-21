@@ -12,4 +12,9 @@ public class TicketController {
     public String list() {
         return "tickets/list";
     }
+
+    @GetMapping("/creationForm")
+    public String creationForm() {
+        return "tickets/creationForm";
+    }
 }
