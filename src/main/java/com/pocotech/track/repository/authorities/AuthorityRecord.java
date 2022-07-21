@@ -1,4 +1,4 @@
-package com.pocotech.track.repository;
+package com.pocotech.track.repository.authorities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

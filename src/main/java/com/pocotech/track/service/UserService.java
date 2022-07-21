@@ -1,9 +1,9 @@
 package com.pocotech.track.service;
 
-import com.pocotech.track.repository.AuthorityRecord;
-import com.pocotech.track.repository.AuthorityRepository;
-import com.pocotech.track.repository.UserRecord;
-import com.pocotech.track.repository.UserRepository;
+import com.pocotech.track.repository.authorities.AuthorityRecord;
+import com.pocotech.track.repository.authorities.AuthorityRepository;
+import com.pocotech.track.repository.users.UserRecord;
+import com.pocotech.track.repository.users.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

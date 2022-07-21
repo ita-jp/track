@@ -1,5 +1,6 @@
-package com.pocotech.track.repository;
+package com.pocotech.track.repository.users;
 
+import com.pocotech.track.repository.authorities.AuthorityRecord;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

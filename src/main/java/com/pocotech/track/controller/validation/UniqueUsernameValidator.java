@@ -1,6 +1,6 @@
 package com.pocotech.track.controller.validation;
 
-import com.pocotech.track.repository.UserRepository;
+import com.pocotech.track.repository.users.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.ConstraintValidator;

@@ -1,5 +1,6 @@
-package com.pocotech.track.repository;
+package com.pocotech.track.repository.users;
 
+import com.pocotech.track.repository.authorities.AuthorityRecord;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;

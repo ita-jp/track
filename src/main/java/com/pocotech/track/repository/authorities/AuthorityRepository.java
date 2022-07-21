@@ -1,4 +1,4 @@
-package com.pocotech.track.repository;
+package com.pocotech.track.repository.authorities;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
