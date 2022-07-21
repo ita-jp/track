@@ -13,6 +13,7 @@
         <thead>
         <tr>
             <th>#</th>
+            <th>種別</th>
             <th>概要</th>
             <th>作成日</th>
         </tr>
@@ -24,6 +25,7 @@
                     (id)
                 </a>
             </th>
+            <td th:text="${ticket.type}"></td>
             <td>
                 <a href="./detail.html" th:href="@{/tickets/{id}(id=${ticket.ticketId})}" th:text="${ticket.summary}">
                     (summary)
