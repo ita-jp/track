@@ -1,5 +1,6 @@
 package com.pocotech.track.service;
 
+import com.pocotech.track.repository.AuthorityRecord;
 import com.pocotech.track.repository.UserRecord;
 import com.pocotech.track.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,15 @@ public class UserService {
     @Transactional(readOnly = true)
     public List<UserEntity> find() {
         return userRepository.selectAll().stream()
-                .map(record -> new UserEntity(record.getUserId(), record.getUsername()))
+                .map(record -> new UserEntity(
+                                record.getUserId(),
+                                record.getUsername(),
+                                record.getAuthorities().stream()
+                                        .map(AuthorityRecord::getAuthority)
+                                        .map(Role::valueOf)
+                                        .toList()
+                        )
+                )
                 .collect(Collectors.toList());
     }
 

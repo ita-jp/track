@@ -14,12 +14,14 @@
         <tr>
             <th>ユーザーID</th>
             <th>ユーザー名</th>
+            <th>ロール</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="user : ${userList}">
             <th th:text="${user.userId}">(username)</th>
             <td th:text="${user.username}">(authority)</td>
+            <td th:text="${user.roles}">(role)</td>
         </tr>
         </tbody>
     </table>

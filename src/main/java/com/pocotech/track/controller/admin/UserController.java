@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.stream.Collectors;
+
 @RequestMapping("/admin/users")
 @Controller
 @RequiredArgsConstructor
@@ -21,7 +23,13 @@ public class UserController {
     @GetMapping
     public String index(Model model) {
         var dto = userService.find().stream()
-                .map(entity -> new UserDTO(entity.userId(), entity.username()))
+                .map(entity -> new UserDTO(
+                        entity.userId(),
+                        entity.username(),
+                        entity.roles().stream()
+                                .map(Enum::name)
+                                .collect(Collectors.toList()))
+                )
                 .toList();
         model.addAttribute("userList", dto);
         return "admin/users/list";
