@@ -1,6 +1,6 @@
 package com.pocotech.track.controller.admin.users;
 
-import com.pocotech.track.service.UserService;
+import com.pocotech.track.service.users.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

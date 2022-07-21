@@ -1,4 +1,4 @@
-package com.pocotech.track.service;
+package com.pocotech.track.service.users;
 
 public enum Permission {
     READ_USER,

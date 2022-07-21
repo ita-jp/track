@@ -1,4 +1,4 @@
-package com.pocotech.track.service;
+package com.pocotech.track.service.security;
 
 import com.pocotech.track.repository.users.UserRepository;
 import lombok.RequiredArgsConstructor;

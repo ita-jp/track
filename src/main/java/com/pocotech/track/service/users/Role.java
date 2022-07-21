@@ -1,4 +1,4 @@
-package com.pocotech.track.service;
+package com.pocotech.track.service.users;
 
 import lombok.AllArgsConstructor;
 

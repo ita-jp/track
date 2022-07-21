@@ -1,4 +1,4 @@
-package com.pocotech.track.service;
+package com.pocotech.track.service.users;
 
 import com.pocotech.track.repository.authorities.AuthorityRecord;
 import com.pocotech.track.repository.authorities.AuthorityRepository;
