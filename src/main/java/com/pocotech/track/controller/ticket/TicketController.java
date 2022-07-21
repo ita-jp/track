@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -40,5 +41,14 @@ public class TicketController {
         }
         ticketService.create(form.getType(), form.getSummary(), form.getDescription());
         return "redirect:/tickets";
+    }
+
+    @GetMapping("/{ticketId}")
+    public String showDetail(@PathVariable("ticketId") long ticketId, Model model) {
+        var dto = ticketService.find(ticketId)
+                .map(e -> new TicketDTO(e.ticketId(), e.type(), e.summary(), e.description(), e.createdAt()))
+                .orElseThrow(() -> new IllegalArgumentException("ticketId = " + ticketId + " is not found.")); // TODO
+        model.addAttribute("ticket", dto);
+        return "tickets/detail";
     }
 }

@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface TicketRepository {
@@ -47,4 +48,25 @@ public interface TicketRepository {
             @Result(property = "name", column = "name")
     })
     MstTicketTypeRecord __mstTicketTypeResultMap();
+
+    @Select("""
+            SELECT
+                t.ticket_id             AS ticketId
+              , t.summary               AS summary
+              , t.description           AS description
+              , t.created_at            AS createdAt
+              , mtt.mst_ticket_types_id AS mtt_mst_ticket_types_id
+              , mtt.name                AS mtt_name
+            FROM tickets t
+            JOIN mst_ticket_types mtt USING (mst_ticket_types_id)
+            WHERE t.ticket_id = #{ticketId}
+            """)
+    @Results(value = {
+            @Result(property = "ticketId", column = "ticketId", id = true),
+            @Result(property = "summary", column = "summary"),
+            @Result(property = "description", column = "description"),
+            @Result(property = "createdAt", column = "createdAt"),
+            @Result(property = "type", one = @One(resultMap = "__mstTicketTypeResultMap", columnPrefix = "mtt_")),
+    })
+    Optional<TicketRecordEx> selectByTicketId(@Param("ticketId") long ticketId);
 }

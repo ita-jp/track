@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,5 +34,16 @@ public class TicketService {
                         r.getCreatedAt()
                 ))
                 .toList();
+    }
+
+    public Optional<TicketEntity> find(long ticketId) {
+        return ticketRepository.selectByTicketId(ticketId)
+                .map(r -> new TicketEntity(
+                        r.getTicketId(),
+                        r.getType().getName(),
+                        r.getSummary(),
+                        r.getDescription(),
+                        r.getCreatedAt()
+                ));
     }
 }
