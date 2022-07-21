@@ -3,6 +3,7 @@ package com.pocotech.track.repository;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -33,7 +34,7 @@ public interface UserRepository {
             @Result(column = "enabled", property = "enabled"),
             @Result(property = "authorities", many = @Many(resultMap = "authorityResultMap", columnPrefix = "authority_"))
     })
-    Optional<UserRecord> selectByUsername(@Param("username") String username);
+    Optional<UserRecordEx> selectByUsername(@Param("username") String username);
 
     @Select("SELECT 1")
     @Results(id = "authorityResultMap", value = {
@@ -59,11 +60,12 @@ public interface UserRepository {
             @Result(column = "enabled", property = "enabled"),
             @Result(property = "authorities", many = @Many(resultMap = "authorityResultMap", columnPrefix = "authority_"))
     })
-    List<UserRecord> selectAll();
+    List<UserRecordEx> selectAll();
 
     @Insert("""
             INSERT INTO users (username, password, enabled)
             VALUES (#{record.username}, #{record.password}, true);
             """)
+    @Options(useGeneratedKeys = true, keyProperty = "userId")
     void insert(@Param("record") UserRecord record);
 }

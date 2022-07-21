@@ -1,6 +1,7 @@
 package com.pocotech.track.service;
 
 import com.pocotech.track.repository.AuthorityRecord;
+import com.pocotech.track.repository.AuthorityRepository;
 import com.pocotech.track.repository.UserRecord;
 import com.pocotech.track.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final AuthorityRepository authorityRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
@@ -36,7 +38,11 @@ public class UserService {
     @Transactional
     public void create(String username, String password, String authority) {
         var encodedPassword = passwordEncoder.encode(password);
-        var record = new UserRecord(null, username, encodedPassword, true, null); // TODO authority
-        userRepository.insert(record);
+
+        var userRecord = new UserRecord(null, username, encodedPassword, true);
+        userRepository.insert(userRecord);
+
+        var authorityRecord = new AuthorityRecord(userRecord.getUserId(), authority);
+        authorityRepository.insert(authorityRecord);
     }
 }

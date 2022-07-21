@@ -9,11 +9,12 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRecord {
+public class UserRecordEx {
 
     private Long userId;
     private String username;
     private String password;
     private boolean enable;
+    private List<AuthorityRecord> authorities;
 
 }
