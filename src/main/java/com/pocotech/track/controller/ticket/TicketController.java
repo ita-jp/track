@@ -22,7 +22,7 @@ public class TicketController {
     public String list(Model model) {
         var dtoList = ticketService.find()
                 .stream()
-                .map(e -> new TicketDTO(e.ticketId(), e.summary(), e.description()))
+                .map(e -> new TicketDTO(e.ticketId(), e.summary(), e.description(), e.createdAt()))
                 .toList();
         model.addAttribute("ticketList", dtoList);
         return "tickets/list";

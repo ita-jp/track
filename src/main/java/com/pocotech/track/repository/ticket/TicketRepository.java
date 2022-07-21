@@ -14,8 +14,8 @@ import java.util.List;
 public interface TicketRepository {
 
     @Insert("""
-            INSERT INTO tickets (summary, description)
-            VALUES (#{record.summary}, #{record.description})
+            INSERT INTO tickets (summary, description, created_at)
+            VALUES (#{record.summary}, #{record.description}, #{record.createdAt})
             """)
     @Options(
             useGeneratedKeys = true,
@@ -28,6 +28,7 @@ public interface TicketRepository {
                 t.ticket_id   as ticketId
               , t.summary     as summary
               , t.description as description
+              , t.created_at  as createdAt
             FROM tickets t
             """)
     List<TicketRecord> select();

@@ -14,6 +14,7 @@
         <tr>
             <th>#</th>
             <th>概要</th>
+            <th>作成日</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
                     (summary)
                 </a>
             </td>
+            <td th:text="${ticket.createdAt()}">(createdAt)</td>
         </tr>
         </tbody>
     </table>
