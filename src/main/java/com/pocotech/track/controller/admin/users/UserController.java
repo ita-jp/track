@@ -1,4 +1,4 @@
-package com.pocotech.track.controller.admin;
+package com.pocotech.track.controller.admin.users;
 
 import com.pocotech.track.service.UserService;
 import lombok.RequiredArgsConstructor;

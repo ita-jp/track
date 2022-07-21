@@ -1,4 +1,4 @@
-package com.pocotech.track.controller.admin;
+package com.pocotech.track.controller.admin.users;
 
 import com.pocotech.track.controller.validation.UniqueUsername;
 import lombok.AllArgsConstructor;
