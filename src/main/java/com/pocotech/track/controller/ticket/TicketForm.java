@@ -9,11 +9,10 @@ import javax.validation.constraints.Size;
 public class TicketForm {
 
     @NotBlank
-    @Size(max=256)
+    @Size(max = 256)
     private String summary;
 
-    @NotBlank
-    @Size(max=256)
+    @Size(max = 256)
     private String description;
 
 }
